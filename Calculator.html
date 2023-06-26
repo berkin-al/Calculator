@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hesap Makinesi</title>
+  <style>
+   
+    body {
+        text-align: center;
+        background-color: gold;
+    }
+
+    .hesaplama {
+        border: 5px solid red;
+        background-color: slategray;
+        width: 300px;
+        height: 300px;
+        padding: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    button {
+        width: 20%;
+        padding-top: 10px;
+    }
+
+    #ekran {
+margin: 10px;
+margin-bottom: 20px; 
+margin-top: 20px; 
+border: 2px solid black;
+display: flex; 
+justify-content: center; 
+align-items: center; 
+}
+
+#sonuc {
+width: 100%;
+padding: 10px;
+font-size: 16px;
+border: 2px solid black;
+border-radius: 5px;
+outline: none;
+box-sizing: border-box;
+}
+
+#reset {
+  margin-top: 20px;
+}
+  </style>
+</head>
+
+<body>
+  <div class="hesaplama">
+    <div id="ekran">
+      <input type="text" id="sonuc">
+    </div>
+    <div id="sayılar">
+      <button onclick="numaraEkle('7')">7</button>
+      <button onclick="numaraEkle('8')">8</button>
+      <button onclick="numaraEkle('9')">9</button>
+      <button onclick="islemYap('+')">+</button>
+      <button onclick="numaraEkle('4')">4</button>
+      <button onclick="numaraEkle('5')">5</button>
+      <button onclick="numaraEkle('6')">6</button>
+      <button onclick="islemYap('-')">-</button>
+      <button onclick="numaraEkle('1')">1</button>
+      <button onclick="numaraEkle('2')">2</button>
+      <button onclick="numaraEkle('3')">3</button>
+      <button onclick="islemYap('/')">/</button>
+      <button onclick="numaraEkle('0')">0</button>
+      <button onclick="numaraEkle('.')">.</button>
+      <button onclick="hesapla()">=</button>
+      <button onclick="islemYap('*')">*</button>
+      <button id="reset">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    var input = document.getElementById('sonuc');
+
+    function numaraEkle(numara) {
+      input.value += numara;
+    }
+
+    function islemYap(islem) {
+      input.value += ' ' + islem + ' ';
+    }
+
+    function hesapla() {
+      var hesap = input.value;
+      var sonuc = eval(hesap);
+      input.value = sonuc;
+    }
+
+    function reset() {
+  input.value = ""; 
+}
+
+var resetButton = document.getElementById("reset");
+resetButton.addEventListener("click", reset);
+
+    
+  </script>
+</body>
+
+</html>
